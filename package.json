@@ -2,6 +2,7 @@
   "name": "digital-hippo",
   "version": "0.1.0",
   "private": true,
+  "main": "dist/server.ts",
   "scripts": {
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
