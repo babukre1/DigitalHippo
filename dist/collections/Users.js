@@ -4,16 +4,12 @@ exports.Users = void 0;
 var PrimaryActionEmail_1 = require("../components/emails/PrimaryActionEmail");
 var adminsAndUser = function (_a) {
     var user = _a.req.user;
-    if (user.role === 'admin')
+    if (user.role === "admin")
         return true;
-    return {
-        id: {
-            equals: user.id,
-        },
-    };
+    return { id: { equals: user.id } };
 };
 exports.Users = {
-    slug: 'users',
+    slug: "users",
     auth: {
         verify: {
             generateEmailHTML: function (_a) {
@@ -21,7 +17,7 @@ exports.Users = {
                 return (0, PrimaryActionEmail_1.PrimaryActionEmailHtml)({
                     actionLabel: "verify your account",
                     buttonText: "Verify Account",
-                    href: "".concat(process.env.NEXT_PUBLIC_SERVER_URL, "/verify-email?token=").concat(token)
+                    href: "".concat(process.env.NEXT_PUBLIC_SERVER_URL, "/verify-email?token=").concat(token),
                 });
             },
         },
@@ -31,49 +27,49 @@ exports.Users = {
         create: function () { return true; },
         update: function (_a) {
             var req = _a.req;
-            return req.user.role === 'admin';
+            return req.user.role === "admin";
         },
         delete: function (_a) {
             var req = _a.req;
-            return req.user.role === 'admin';
+            return req.user.role === "admin";
         },
     },
     admin: {
         hidden: function (_a) {
             var user = _a.user;
-            return user.role !== 'admin';
+            return user.role !== "admin";
         },
-        defaultColumns: ['id'],
+        defaultColumns: ["id"],
     },
     fields: [
         {
-            name: 'products',
-            label: 'Products',
+            name: "product",
+            label: "Products",
             admin: {
                 condition: function () { return false; },
             },
-            type: 'relationship',
-            relationTo: 'products',
+            type: "relationship",
+            relationTo: "products",
             hasMany: true,
         },
         {
-            name: 'product_files',
-            label: 'Product files',
+            name: "product_files",
+            label: "Product Files",
             admin: {
                 condition: function () { return false; },
             },
-            type: 'relationship',
-            relationTo: 'product_files',
+            type: "relationship",
+            relationTo: "product_files",
             hasMany: true,
         },
         {
-            name: 'role',
-            defaultValue: 'user',
+            name: "role",
+            defaultValue: "user",
             required: true,
-            type: 'select',
+            type: "select",
             options: [
-                { label: 'Admin', value: 'admin' },
-                { label: 'User', value: 'user' },
+                { label: "Admin", value: "admin" },
+                { label: "User", value: "user" },
             ],
         },
     ],

@@ -49,8 +49,8 @@ function constructMetadata(_a) {
             title: title,
             description: description,
             images: [image],
-            creator: '@joshtriedcoding',
-        }, icons: icons, metadataBase: new URL('https://digitalhippo.up.railway.app') }, (noIndex && {
+            creator: '@abubakr',
+        }, icons: icons, metadataBase: new URL('https://digitalhippo-production-4-fun.up.railway.app') }, (noIndex && {
         robots: {
             index: false,
             follow: false,

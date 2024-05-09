@@ -103,7 +103,7 @@ var getPayloadClient = function () {
                     if (!cached.promise) {
                         cached.promise = payload_1.default.init(__assign({ email: {
                                 transport: transporter,
-                                fromAddress: 'hello@joshtriedcoding.com',
+                                fromAddress: 'onboarding@resend.dev',
                                 fromName: 'DigitalHippo',
                             }, secret: process.env.PAYLOAD_SECRET, local: (initOptions === null || initOptions === void 0 ? void 0 : initOptions.express) ? false : true }, (initOptions || {})));
                     }

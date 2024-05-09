@@ -91,7 +91,7 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                         req.rawBody = buffer;
                     },
                 });
-                app.post('/api/webhooks/stripe', webhookMiddleware, webhooks_1.stripeWebhookHandler);
+                app.post("/api/webhooks/stripe", webhookMiddleware, webhooks_1.stripeWebhookHandler);
                 return [4 /*yield*/, (0, get_payload_1.getPayloadClient)({
                         initOptions: {
                             express: app,
@@ -110,9 +110,9 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
-                                    payload.logger.info('Next.js is building for production');
+                                    payload.logger.info("Next.js is building for production");
                                     // @ts-expect-error
-                                    return [4 /*yield*/, (0, build_1.default)(path_1.default.join(__dirname, '../'))];
+                                    return [4 /*yield*/, (0, build_1.default)(path_1.default.join(__dirname, "../"))];
                                 case 1:
                                     // @ts-expect-error
                                     _a.sent();
@@ -125,22 +125,22 @@ var start = function () { return __awaiter(void 0, void 0, void 0, function () {
                 }
                 cartRouter = express_1.default.Router();
                 cartRouter.use(payload.authenticate);
-                cartRouter.get('/', function (req, res) {
+                cartRouter.get("/", function (req, res) {
                     var request = req;
                     if (!request.user)
-                        return res.redirect('/sign-in?origin=cart');
+                        return res.redirect("/sign-in?origin=cart");
                     var parsedUrl = (0, url_1.parse)(req.url, true);
                     var query = parsedUrl.query;
-                    return next_utils_1.nextApp.render(req, res, '/cart', query);
+                    return next_utils_1.nextApp.render(req, res, "/cart", query);
                 });
-                app.use('/cart', cartRouter);
-                app.use('/api/trpc', trpcExpress.createExpressMiddleware({
+                app.use("/cart", cartRouter);
+                app.use("/api/trpc", trpcExpress.createExpressMiddleware({
                     router: trpc_1.appRouter,
                     createContext: createContext,
                 }));
                 app.use(function (req, res) { return (0, next_utils_1.nextHandler)(req, res); });
                 next_utils_1.nextApp.prepare().then(function () {
-                    payload.logger.info('Next.js started');
+                    payload.logger.info("Next.js started");
                     app.listen(PORT, function () { return __awaiter(void 0, void 0, void 0, function () {
                         return __generator(this, function (_a) {
                             payload.logger.info("Next.js App URL: ".concat(process.env.NEXT_PUBLIC_SERVER_URL));
