@@ -3,7 +3,8 @@ import { privateProcedure, publicProcedure, router } from "./trpc";
 import { TRPCError } from "@trpc/server";
 import { getPayloadClient } from "../get-payload";
 import { stripe } from "../lib/stripe";
-import type Stripe from "stripe";
+import Stripe from "stripe";
+import { toast } from "sonner";
 
 export const paymentRouter = router({
   createSession: privateProcedure
@@ -70,8 +71,9 @@ export const paymentRouter = router({
 
         return { url: stripeSession.url };
       } catch (err) {
-        console.log(err);
-
+        if (err instanceof Stripe.errors.StripeError) {
+          toast.error(err.message);
+        }
         return { url: null };
       }
     }),
