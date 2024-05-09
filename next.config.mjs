@@ -3,12 +3,10 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
-      },
-      {
-        protocol: "https",
-        hostname: "https://digitalhippo-production-4-fun.up.railway.app",
+        protocol: 'https',
+        hostname: '**',
+        port: '',
+        pathname: '**',
       },
     ],
   },
