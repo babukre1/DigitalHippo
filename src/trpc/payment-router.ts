@@ -74,7 +74,7 @@ export const paymentRouter = router({
         if (err instanceof Stripe.errors.StripeError) {
           toast.error(err.message);
         }
-        return { url: null };
+        return { url: err };
       }
     }),
   pollOrderStatus: privateProcedure

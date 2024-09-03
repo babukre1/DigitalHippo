@@ -46,7 +46,6 @@ const Page = () => {
 
         if (err instanceof ZodError) {
           toast.error(err.issues[0].message)
-
           return
         }
 
